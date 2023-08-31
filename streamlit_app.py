@@ -15,11 +15,12 @@ import streamlit as st
 We now try to initiate the pipeline between the BART model and our local system, after which your text will be analysed and then summarised
 """
 
-def summarize(text, min, max, threshold = 4206, curve = 0.1):
+def summarize(text, min, max, threshold = 4096, curve = 0.1):
   charCount = len(text)
 
   if charCount > threshold:
-    return text
+    st.write("Hey there! You are exceeding the limit of 4096 characters. Please truncate the text to generate the summary")
+    return
 
   wordCount = text.count(" ")
 
